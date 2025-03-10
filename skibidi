@@ -1,0 +1,488 @@
+local allowedUsers = {
+    ["PAayft2"] = true,
+    ["ADMIN_VN"] = true,
+    ["zeus22350"] = true,
+
+}
+local currentUserName = game.Players.LocalPlayer.Name
+
+if not allowedUsers[currentUserName] then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "?";
+        Text = "Cút Đéo Đủ tuổi xài hack bố";
+        Duration = 5;
+    })
+    return
+end
+
+print('reji cặc nhỏ còn bị teo')
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
+
+if ReplicatedStorage then
+    local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
+    if ABCD then
+        ABCD:Destroy()
+        warn("Anti cheat hai vc")
+    end
+end
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    local player = game.Players.LocalPlayer
+    if player.Character and player.Character:FindFirstChild("Humanoid") then
+        local humanoid = player.Character.Humanoid
+        if humanoid:GetState() == Enum.HumanoidStateType.Freefall then
+            -- Apply a small constant upward force to counteract gravity
+            local humanoidRootPart = player.Character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                -- Set the velocity to slow down the fall, adjust as needed
+                humanoidRootPart.Velocity = Vector3.new(0, -0.01, 0)
+            end
+        end
+    end
+end)
+
+if workspace:FindFirstChild("Antifly") then
+    for i,v in pairs(workspace.Antifly:GetChildren()) do
+       if v:FindFirstChild('TouchInterest') or v:FindFirstChildOfClass("TouchTransmitter") then
+          local contact = v:FindFirstChild('TouchInterest') or v:FindFirstChildOfClass("TouchTransmitter")
+          contact:Destroy()
+       end
+    end
+    spawn(function()
+        while wait(10) do
+            for i,v in pairs(workspace.Antifly:GetChildren()) do
+                if v:FindFirstChild('TouchInterest') or v:FindFirstChildOfClass("TouchTransmitter") then
+                   local contact = v:FindFirstChild('TouchInterest') or v:FindFirstChildOfClass("TouchTransmitter")
+                   contact:Destroy()
+                end
+            end
+        end
+    end)
+end
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+
+local Window = Fluent:CreateWindow({
+    Title = "Cộng Đồng Việt Nam",
+    SubTitle = "By Duy Đẹp Zai Cu 10m", 
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.RightAlt
+})
+
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main", Icon = "" }),
+}
+function GetList()
+    local player = game:GetService("Players").LocalPlayer
+    local inventory = player.PlayerGui.Inventory.MainFrame.List
+    local tableweaponlist = {}
+
+    for i,v in pairs(inventory:GetChildren()) do
+       table.insert(tableweaponlist,v.Name)
+       print('Added '..v.Name)
+    end
+    return tableweaponlist
+end
+
+local a = Tabs.Main:AddButton({
+    Title = "Select Weapon",
+    Description = "Weapon Hiện Tại : None",
+    Callback = function()
+        local weaponButtons = {}
+        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            table.insert(weaponButtons, {
+                Title = v.Name,
+                Callback = function()
+                    AttackWeapon = v.Name
+                    print("Vũ khí đã chọn: " .. v.Name)
+                end
+            })
+        end
+
+        Window:Dialog({
+            Title = "Select Weapon",
+            Content = "Chọn một vũ khí:",
+            Buttons = weaponButtons
+        })
+    end
+})
+
+spawn(function()
+ while wait(1) do
+    if AttackWeapon then
+        a:SetDesc("Weapon Hien Tai : "..AttackWeapon)
+    end
+ end
+end)
+
+local Toggle = Tabs.Main:AddToggle("AutoGiangHo", {Title = "Auto Giang Ho", Default = AutoFarmGiangho })
+
+Toggle:OnChanged(function(Value)
+    AutoFarmGiangho = Value
+end)
+
+local Toggle = Tabs.Main:AddToggle("AutoGiangHo", {Title = "Auto Giang Ho2", Default = AutoFarmGiangho })
+
+Toggle:OnChanged(function(Value)
+    AutoFarmGiangho2 = Value
+end)
+
+local Toggle = Tabs.Main:AddToggle("AutoGiangHo", {Title = "Auto Buy bang gac", Default = AutoBuyBangGac })
+
+Toggle:OnChanged(function(Value)
+    AutoBuyBangGac = Value
+end)
+
+
+Tabs.Main:AddButton({
+    Title = "Hit Box",
+    Description = "",
+    Callback = function()
+        local weaponButtons = {
+            {
+                Title = "Kích",
+                Callback = function()
+                    local sound = Instance.new("Sound")
+                    sound.SoundId = "rbxassetid://413861777"
+                    sound.Parent = game:GetService("SoundService")
+                    sound:Play()
+        
+                    wait()
+                    game.StarterGui:SetCore("SendNotification", {
+                        Title = "Need tool"; -- the title (ofc)
+                        Text = "If you dont have weapon then get one and use this command"; -- what the text says (ofc)
+                        Duration = 5; -- how long the notification should in secounds
+                    })
+                    for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+                        if v:isA("Tool") then
+                            local a = Instance.new("SelectionBox",v.Handle)
+                            v.Handle.Massless = true
+                            v.Handle.Transparency = 1
+                            a.Adornee = v.Handle
+                            v.Handle.Size = Vector3.new(28,28,28)
+                            local selectionBox = Instance.new("SelectionBox",v.Handle)
+                            selectionBox.Adornee = v.Handle
+                            selectionBox.Color3 = Color3.new(0, 0.313725, 0.47451)
+                        end
+                    end
+                end
+            },
+            {
+                Title = "bấm kích trước r bấm cái này",
+                Callback = function()
+                    local sound = Instance.new("Sound")
+                    sound.SoundId = "rbxassetid://413861777"
+                    sound.Parent = game:GetService("SoundService")
+                    sound:Play()
+        
+                    wait()
+                    game.StarterGui:SetCore("SendNotification", {
+                        Title = "Need tool"; -- the title (ofc)
+                        Text = "If you dont have weapon then get one and use this command"; -- what the text says (ofc)
+                        Duration = 5; -- how long the notification should in secounds
+                    })
+                    for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+                        if v:isA("Tool") then
+                            v.Handle.Size = Vector3.new(25,25,25)
+                        end
+                    end
+                end
+            },
+            {
+                Title = "Delete Line",
+                Callback = function()
+                    local sound = Instance.new("Sound")
+                    sound.SoundId = "rbxassetid://413861777"
+                    sound.Parent = game:GetService("SoundService")
+                    sound:Play()
+        
+                    wait()
+                    game.StarterGui:SetCore("SendNotification", {
+                        Title = "Need tool"; -- the title (ofc)
+                        Text = "If you dont have weapon then get one and use this command"; -- what the text says (ofc)
+                        Duration = 5; -- how long the notification should in secounds
+                    })
+                    for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+                        if v:isA("Tool") then
+                            for bf,vf in pairs(v.Handle:GetChildren()) do
+                                if vf.Name == "SelectionBox" then
+                                   vf:Destroy()
+                                end
+                            end
+                        end
+                    end
+                end
+            },
+        {
+Title = "Farm Quái",
+                Callback = function()
+                    local sound = Instance.new("Sound")
+                    sound.SoundId = "rbxassetid://413861777"
+                    sound.Parent = game:GetService("SoundService")
+                    sound:Play()
+        
+                    wait()
+                    game.StarterGui:SetCore("SendNotification", {
+                        Title = "Need tool"; -- the title (ofc)
+                        Text = "If you dont have weapon then get one and use this command"; -- what the text says (ofc)
+                        Duration = 5; -- how long the notification should in secounds
+                    })
+                    for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+                        if v:isA("Tool") then
+                            v.Handle.Size = Vector3.new(33,33,33)
+                        end
+                    end
+                end
+            },
+            {
+            Title = "kích quái",
+                Callback = function()
+                    local sound = Instance.new("Sound")
+                    sound.SoundId = "rbxassetid://413861777"
+                    sound.Parent = game:GetService("SoundService")
+                    sound:Play()
+        
+                    wait()
+                    game.StarterGui:SetCore("SendNotification", {
+                        Title = "Need tool"; -- the title (ofc)
+                        Text = "If you dont have weapon then get one and use this command"; -- what the text says (ofc)
+                        Duration = 5; -- how long the notification should in secounds
+                    })
+                    for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+                        if v:isA("Tool") then
+                            v.Handle.Size = Vector3.new(10,10,10)
+                        end
+                    end
+                end
+            },
+            }
+
+        Window:Dialog({
+            Title = "Select Weapon",
+            Content = "Chọn một vũ khí:",
+            Buttons = weaponButtons
+        })
+    end
+})
+
+local Toggle = Tabs.Main:AddToggle("AutoBangGac", {Title = "Auto Bang Gac", Default = AutoBangGacFrs })
+
+Toggle:OnChanged(function(Value)
+    AutoBangGacFr = Value
+end)
+
+spawn(function()
+ while wait() do
+    if AutoBangGacFr then
+        if not game.Players.LocalPlayer.Backpack:FindFirstChild("băng gạc") and not game.Players.LocalPlayer.Character:FindFirstChild("băng gạc")  then
+        local args = {
+            [1] = "eue",
+            [2] = "băng gạc"
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("InventoryService"):WaitForChild("RE"):WaitForChild("updateInventory"):FireServer(unpack(args))
+        wait(1)
+        end
+    end
+ end
+end)
+
+function EquipWeapon(ToolSe)
+    if not _G.NotAutoEquip then
+        if ToolSe then
+            if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
+                    Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
+                    wait(.1)
+                    game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
+            end
+        end
+    end
+end
+
+function Prompt(proximityPrompt)
+    wait(.1)
+    if proximityPrompt then
+        pcall(function()
+            proximityPrompt.Enabled = true
+            proximityPrompt.HoldDuration = 0
+            fireproximityprompt(proximityPrompt, 1, true)
+        end)
+    else
+        warn("ProximityPrompt is nil")
+    end
+end
+function CheckItem(vukhi)
+    local player = game:GetService("Players").LocalPlayer
+    local inventory = player.PlayerGui.Inventory.MainFrame.List
+    
+    if inventory:FindFirstChild(vukhi) then
+        return true
+    end
+end
+function UnInventoryWeapon(WE)
+    if CheckItem(WE) then
+    local args = {
+        [1] = "eue",
+        [2] = WE
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("InventoryService"):WaitForChild("RE"):WaitForChild("updateInventory"):FireServer(unpack(args))
+    end
+end
+
+spawn(function()
+    while wait() do
+        if DisableALLautogiangho then
+            break
+        end
+        if AutoFarmGiangho and not DisableALLautogiangho and (Vector3.new(871, 29, -1423) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 then
+            for i,v in pairs(workspace.GiangHo.NPCs:GetChildren()) do
+               if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
+                  repeat wait() 
+                  pcall(function()
+                    for i,v in pairs(workspace.GiangHo.Drop:GetChildren()) do
+                        if v:FindFirstChild("ProximityPrompt") or v:FindFirstChildOfClass('ProximityPrompt') then
+                            local itemdrop = v:FindFirstChild("ProximityPrompt") or v:FindFirstChildOfClass('ProximityPrompt')
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                            Prompt(itemdrop)
+                        end
+                    end
+                    if game.Players.LocalPlayer.Character.Humanoid.Health > 40 then
+                    for iline,npc in pairs(workspace.GiangHo.Drop:GetChildren()) do
+                        local npcstatus = npc.values.Chasing.Value
+                        if npcstatus == false then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.new(0,8,0)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.new(0,8,0)
+                        else
+                            npc.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+                        end
+                    end
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,8,0)
+                    if not game.Players.LocalPlayer.Backpack:FindFirstChild(AttackWeapon) and not game.Players.LocalPlayer.Character:FindFirstChild(AttackWeapon) then
+                        UnInventoryWeapon(AttackWeapon)
+                        wait(1)
+                    end
+                    EquipWeapon(AttackWeapon)
+                    game:GetService'VirtualUser':CaptureController()
+                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    else
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871, 29, -1423)
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
+                        EquipWeapon('băng gạc')
+                        else
+                            UnInventoryWeapon('băng gạc')
+                            wait(.5)
+                        end
+                        game:GetService'VirtualUser':CaptureController()
+                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    end
+                  end)
+                  until not v:FindFirstChild('HumanoidRootPart') or not v:FindFirstChild('Humanoid') or v.Humanoid.Health <= 0 or DisableALLautogiangho
+               end
+            end
+        end
+    end
+end)
+
+spawn(function()
+    while wait() do
+       if AutoFarmGiangho and not DisableALLautogiangho then
+       game:GetService'VirtualUser':CaptureController()
+       game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+       end
+    end
+end)
+
+spawn(function()
+    while wait() do
+        if DisableALLautogiangho then
+            break
+        end
+        if AutoFarmGiangho2 and not DisableALLautogiangho and (Vector3.new(871, 29, -1423) - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000 then
+            for i,v in pairs(workspace.GiangHo2.NPCs:GetChildren()) do
+               if v:FindFirstChild('HumanoidRootPart') and v:FindFirstChild('Humanoid') and v.Humanoid.Health > 0 then
+                  repeat wait() 
+                  pcall(function()
+                    for i,v in pairs(workspace.GiangHo2.Drop:GetChildren()) do
+                        if v:FindFirstChild("ProximityPrompt") or v:FindFirstChildOfClass('ProximityPrompt') then
+                            local itemdrop = v:FindFirstChild("ProximityPrompt") or v:FindFirstChildOfClass('ProximityPrompt')
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                            Prompt(itemdrop)
+                        end
+                    end
+                    if game.Players.LocalPlayer.Character.Humanoid.Health > 40 then
+                    for iline,npc in pairs(workspace.GiangHo2.Drop:GetChildren()) do
+                        local npcstatus = npc.values.Chasing.Value
+                        if npcstatus == false then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
+                            wait(.1)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npc.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
+                        else
+                            npc.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+                        end
+                    end
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0,15,0)
+                    if not game.Players.LocalPlayer.Backpack:FindFirstChild(AttackWeapon) and not game.Players.LocalPlayer.Character:FindFirstChild(AttackWeapon) then
+                        UnInventoryWeapon(AttackWeapon)
+                        wait(1)
+                    end
+                    EquipWeapon(AttackWeapon)
+                    game:GetService'VirtualUser':CaptureController()
+                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    else
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(871, 29, -1423)
+                        if game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
+                        EquipWeapon('băng gạc')
+                        else
+                            UnInventoryWeapon('băng gạc')
+                            wait(.5)
+                        end
+                        game:GetService'VirtualUser':CaptureController()
+                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    end
+                  end)
+                  until not v:FindFirstChild('HumanoidRootPart') or not v:FindFirstChild('Humanoid') or v.Humanoid.Health <= 0 or DisableALLautogiangho
+               end
+            end
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+       if AutoFarmGiangho2 and not DisableALLautogiangho then
+       game:GetService'VirtualUser':CaptureController()
+       game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+       end
+    end
+end)
+function BuyBangGac()
+    for i = 1, 50 do
+        wait(0.2)
+        game:GetService("ReplicatedStorage").KnitPackages._Index["sleitnick_knit@1.7.0"].knit.Services.ShopService.RE.buyItem:FireServer("băng gạc", 2)
+    end
+end
+
+spawn(function()
+    while wait(1) do
+        if AutoBuyBangGac then
+            local player = game:GetService("Players").LocalPlayer
+            local inventory = player.PlayerGui.Inventory.MainFrame.List
+            
+            if inventory:FindFirstChild("băng gạc") then
+                local quantity = tonumber(inventory["băng gạc"].Quantity.Text)
+                if quantity and quantity <= 20 then
+                    BuyBangGac()
+                end
+            end
+        end
+    end
+end)
+print('cdvn rác')
