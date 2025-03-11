@@ -1,6 +1,6 @@
 local allowedUsers = {
     ["PAayft2"] = true,
-    ["Giaohuongeb5351"] = true,
+    ["GiaoHuongeb5351"] = true,
     ["Zeus22350"] = true,
 
 }
