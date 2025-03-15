@@ -28,36 +28,6 @@ else
     warn("Remote not found!")
 end
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
-local GetPlayerDistance = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.GetPlayerDistance
-
-if GetPlayerDistance then
-    GetPlayerDistance:Destroy()
-    warn("Anti cheat hai vc")
-else
-    warn("Remote not found!")
-end
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-
-if ReplicatedStorage then
-    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-    if Remotes then
-        Remotes:Destroy()
-        warn("Anti cheat ngu vc")
-    end
-end  
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-
-if ReplicatedStorage then
-    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-    if Remotes then
-        Remotes:Destroy()
-        warn("Anti cheat ngu vc")
-    end
-end   
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
@@ -79,7 +49,37 @@ if ReplicatedStorage then
         warn("Anti cheat hai vc")
     end
 end
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
+local GetPlayerDistance = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.GetPlayerDistance
 
+if GetPlayerDistance then
+    GetPlayerDistance:Destroy()
+    warn("Anti cheat hai vc")
+else
+    warn("Remote not found!")
+end
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+
+if ReplicatedStorage then
+    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+    if Remotes then
+        Remotes:Destroy()
+        warn("Anti cheat ngu vc")
+    end
+end   
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CashService = ReplicatedStorage:FindFirstChild("KnitPackages"):FindFirstChild("_Index"):FindFirstChild("sleitnick_knit@1.7.0"):FindFirstChild("knit"):FindFirstChild("Services"):FindFirstChild("CashService")
+
+if ReplicatedStorage then
+    if CashService then
+        CashService:Destroy()
+        warn("Anti cheat activated: CashService destroyed!")
+    end
+end
 game:GetService("RunService").Heartbeat:Connect(function()
     local player = game.Players.LocalPlayer
     if player.Character and player.Character:FindFirstChild("Humanoid") then
