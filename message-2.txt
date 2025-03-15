@@ -16,13 +16,24 @@ if not allowedUsers[currentUserName] then
     return
 end
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+
+if ReplicatedStorage then
+    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+    if Remotes then
+        Remotes:Destroy()
+        warn("Anti cheat ngu vc")
+    end
+end   
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
 
 if ReplicatedStorage then
     local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
     if ABCD then
         ABCD:Destroy()
-        warn("Anti cheat hai vc")
+        warn("Anti cheat fix con ngu vc")
     end
 end   
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -34,7 +45,8 @@ if ReplicatedStorage then
         Additions:Destroy()
         warn("Anti cheat hai vc")
     end
-end 
+end
+
 
     local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/VNT-UNIVERSAL/MyCode/refs/heads/main/UILib"))()
     local w1 = library:Window("By Duy ")
