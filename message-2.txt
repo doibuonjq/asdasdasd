@@ -15,7 +15,16 @@ if not allowedUsers[currentUserName] then
     })
     return
 end
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
 
+if ReplicatedStorage then
+    local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
+    if ABCD then
+        ABCD:Destroy()
+        warn("Anti cheat hai vc")
+    end
+end   
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Additions = ReplicatedStorage:FindFirstChild("Additions")
 
