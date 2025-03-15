@@ -28,6 +28,16 @@ else
     warn("Remote not found!")
 end
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+
+if ReplicatedStorage then
+    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+    if Remotes then
+        Remotes:Destroy()
+        warn("Anti cheat ngu vc")
+    end
+end   
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
