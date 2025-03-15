@@ -17,6 +17,17 @@ if not allowedUsers[currentUserName] then
 end
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
+local KickTuiDi = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.KickTuiDi
+
+if KickTuiDi then
+    KickTuiDi:Destroy()
+    warn("Anti cheat hai vc")
+else
+    warn("Remote not found!")
+end
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
 local GetPlayerDistance = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.GetPlayerDistance
 
 if GetPlayerDistance then
