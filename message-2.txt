@@ -1,7 +1,7 @@
  local allowedUsers = {
     ["PAayft2"] = true,
     ["GiaoHuongeb5351"] = true,
-    ["Zeus22350"] = true,
+    ["asfasfasdg_6"] = true,
     ["hakhanhlam9999"] = true,
 
 }
