@@ -17,26 +17,30 @@ if not allowedUsers[currentUserName] then
 end
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
-local KickTuiDi = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.KickTuiDi
 
+-- Check for and handle KickTuiDi (RemoteEvent or similar object)
+local KickTuiDi = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.KickTuiDi
 if KickTuiDi then
-    KickTuiDi:Destroy()
-    warn("Anti cheat hai vc")
+    if KickTuiDi:IsA("RemoteEvent") then
+        KickTuiDi:Destroy()
+        warn("Anti cheat hai vc - KickTuiDi RemoteEvent destroyed")
+    else
+        warn("KickTuiDi found but not a RemoteEvent")
+    end
 else
-    warn("Remote not found!")
+    warn("KickTuiDi not found!")
 end
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
+-- Check for and handle GetPlayerDistance (function disabling)
 local GetPlayerDistance = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.GetPlayerDistance
-
 if GetPlayerDistance then
     -- Disabling the function by overriding it
     DataService.knit.Services.DataService.RF.GetPlayerDistance = function() end
-    warn("Anti cheat hai vc")
+    warn("Anti cheat hai vc - GetPlayerDistance function disabled")
 else
-    warn("Function not found!")
+    warn("GetPlayerDistance not found!")
 end
+
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
