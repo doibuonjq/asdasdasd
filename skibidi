@@ -18,13 +18,24 @@ end
 
 print('reji cặc nhỏ còn bị teo')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+
+if ReplicatedStorage then
+    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+    if Remotes then
+        Remotes:Destroy()
+        warn("Anti cheat ngu vc")
+    end
+end   
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
 
 if ReplicatedStorage then
     local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
     if ABCD then
         ABCD:Destroy()
-        warn("Anti cheat hai vc")
+        warn("Anti cheat fix con ngu vc")
     end
 end   
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
