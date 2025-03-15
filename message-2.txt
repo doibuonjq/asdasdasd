@@ -26,16 +26,6 @@ else
     warn("Remote not found!")
 end
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-
-if ReplicatedStorage then
-    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-    if Remotes then
-        Remotes:Destroy()
-        warn("Anti cheat ngu vc")
-    end
-end   
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
@@ -68,7 +58,15 @@ else
     warn("Remote not found!")
 end
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local CashService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
 
+if CashService then
+    CashService:Destroy()
+    warn("Anti cheat hai vc")
+else
+    warn("Remote not found!")
+end
 
     local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/VNT-UNIVERSAL/MyCode/refs/heads/main/UILib"))()
     local w1 = library:Window("By Duy ")
