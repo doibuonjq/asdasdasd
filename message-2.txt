@@ -31,11 +31,13 @@ local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and Replica
 local GetPlayerDistance = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.GetPlayerDistance
 
 if GetPlayerDistance then
-    GetPlayerDistance:Destroy()
+    -- Disabling the function by overriding it
+    DataService.knit.Services.DataService.RF.GetPlayerDistance = function() end
     warn("Anti cheat hai vc")
 else
-    warn("Remote not found!")
+    warn("Function not found!")
 end
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
 
