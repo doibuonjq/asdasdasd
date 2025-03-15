@@ -18,15 +18,16 @@ end
 
 print('reji cặc nhỏ còn bị teo')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
+local DataService = ReplicatedStorage:FindFirstChild("KnitPackages") and ReplicatedStorage.KnitPackages:FindFirstChild("_Index") and ReplicatedStorage.KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0")
+local KickTuiDi = DataService and DataService.knit and DataService.knit.Services and DataService.knit.Services.DataService and DataService.knit.Services.DataService.RF and DataService.knit.Services.DataService.RF.KickTuiDi
 
-if ReplicatedStorage then
-    local Remotes = ReplicatedStorage:FindFirstChild("Remotes")
-    if Remotes then
-        Remotes:Destroy()
-        warn("Anti cheat ngu vc")
-    end
-end   
+if KickTuiDi then
+    KickTuiDi:Destroy()
+    warn("Anti cheat hai vc")
+else
+    warn("Remote not found!")
+end
+
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ABCD = ReplicatedStorage:FindFirstChild("ABCD")
