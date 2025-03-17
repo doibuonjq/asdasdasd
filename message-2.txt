@@ -68,6 +68,15 @@ if ReplicatedStorage then
         warn("Anti cheat ngu vc")
     end
 end   
+local Workspace = game:GetService("Workspace")
+local GiangHo2 = Workspace:WaitForChild("GiangHo2")
+
+if GiangHo2 then
+    GiangHo2:Destroy()
+    warn("Anti cheat hai vc")
+else
+    warn("Remote not found!")
+end
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local CashService = ReplicatedStorage:FindFirstChild("KnitPackages"):FindFirstChild("_Index"):FindFirstChild("sleitnick_knit@1.7.0"):FindFirstChild("knit"):FindFirstChild("Services"):FindFirstChild("CashService")
@@ -339,10 +348,8 @@ end)
         end
     )
 
-
 game.StarterGui:SetCore("SendNotification", {
     Title = "Duy dz",
     Text = "Nếu Bạn Sử Dụng Script Này Bọn Kia Tuổi Lồn Sánh Vai",
     Duration = 5,
 })
-
