@@ -37,35 +37,29 @@
             end
         end
     )
-w1:Button("Xoá cái vòng nhưng vẫn Hitbox", function()
-    local sound = Instance.new("Sound")
-    sound.SoundId = "rbxassetid://413861777"
-    sound.Parent = game:GetService("SoundService")
-    sound:Play()
-
-    -- Gửi thông báo
-    pcall(function()
-        game.StarterGui:SetCore("SendNotification", {
-            Title = "Need tool",
-            Text = "If you don't have a weapon, get one and use this command.",
-            Duration = 5,
-        })
-    end)
-
-    -- Kiểm tra Tool và SelectionBox
-    local player = game:GetService("Players").LocalPlayer
-    if player.Character then
-        for _, tool in pairs(player.Character:GetChildren()) do
-            if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
-                for _, child in pairs(tool.Handle:GetChildren()) do
-                    if child:IsA("SelectionBox") then
-                        child:Destroy()
-                    end
-                end
-            end
-        end
+    function Music()
+        local sound = Instance.new("Sound")
+        sound.SoundId = "rbxassetid://413861777"
+        sound.Parent = game:GetService("SoundService")
+        sound:Play()
     end
-end)
+    function GetBackpack(Weapon) 
+        game:GetService("ReplicatedStorage").KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0").knit.Services.InventoryService.RE.updateInventory:FireServer("refresh")
+        game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages")
+            :WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0")
+            :WaitForChild("knit"):WaitForChild("Services")
+            :WaitForChild("InventoryService"):WaitForChild("RE")
+            :WaitForChild("updateInventory"):FireServer("eue", Weapon)
+    end
+    spawn(function()
+     while wait(.3) do
+       if AutoLayBangGac then
+           if not game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
+           GetBackpack('băng gạc')
+           end
+       end
+     end
+    end)
 w1:Button("Unlock Car", function()
     local seatPart = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").SeatPart
     if seatPart then
