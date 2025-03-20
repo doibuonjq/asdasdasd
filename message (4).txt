@@ -1,0 +1,295 @@
+-- Saved by UniversalSynSaveInstance (Join to Copy Games) https://discord.gg/wx4ThpAsmw
+
+-- Decompiled with Medal in Ayaya
+
+local v_u_1 = game:GetService("Players")
+local v2 = game:GetService("ReplicatedStorage")
+game:GetService("SoundService")
+game:GetService("Teams")
+game:GetService("MarketplaceService")
+local v_u_3 = require(v2.KnitPackages.Knit)
+local v_u_4 = require(v2.Modules.Icon)
+local v_u_5 = v_u_1.LocalPlayer
+local v_u_6 = v_u_5.PlayerGui
+local v7 = v_u_3.CreateController({
+	["Name"] = "TopBarController"
+})
+function v7.KnitStart(_)
+	-- upvalues: (copy) v_u_3, (copy) v_u_6, (copy) v_u_4, (copy) v_u_5, (copy) v_u_1
+	local v_u_8 = v_u_3.GetService("InventoryService")
+	local v9 = v_u_3.GetService("DeadService")
+	local v10 = v_u_3.GetService("JobService")
+	local v_u_11 = v_u_3.GetService("VehiclesService")
+	v_u_3.GetService("PhoneService")
+	v_u_3.GetService("SaluteService")
+	local v_u_12 = v_u_6:WaitForChild("Inventory")
+	local v_u_13 = v_u_6:WaitForChild("Phone")
+	local v_u_14 = v_u_6:WaitForChild("Vehicles")
+	local v_u_15 = v_u_6:WaitForChild("Store")
+	v_u_4.new():setName("phone"):setImage("rbxassetid://17334788979"):align("left"):bindToggleKey(Enum.KeyCode.M):bindEvent("selected", function()
+		-- upvalues: (ref) v_u_5, (copy) v_u_13
+		if v_u_5.Character:GetAttribute("onCarry") ~= true then
+			if v_u_13.MainFrame.Lock.Value == false then
+				v_u_13.Enabled = true
+			end
+		end
+	end):bindEvent("deselected", function()
+		-- upvalues: (copy) v_u_13
+		v_u_13.Enabled = false
+	end)
+	v_u_4.new():setName("inventory"):setImage("rbxassetid://17346704780"):align("left"):bindToggleKey(Enum.KeyCode.Backquote):bindEvent("selected", function()
+		-- upvalues: (copy) v_u_8, (copy) v_u_12
+		v_u_8.updateInventory:Fire("refresh")
+		v_u_12.Enabled = true
+	end):bindEvent("deselected", function()
+		-- upvalues: (copy) v_u_12
+		v_u_12.Enabled = false
+	end)
+	v_u_4.new():setName("vehicles"):setImage("rbxassetid://17346700855"):align("left"):bindToggleKey(Enum.KeyCode.N):bindEvent("selected", function()
+		-- upvalues: (copy) v_u_11, (copy) v_u_14
+		v_u_11.refresh:Fire()
+		v_u_14.Enabled = true
+	end):bindEvent("deselected", function()
+		-- upvalues: (copy) v_u_14
+		v_u_14.Enabled = false
+	end)
+	v_u_4.new():setName("store"):setImage("rbxassetid://18241727938"):align("left"):bindEvent("selected", function()
+		-- upvalues: (copy) v_u_15
+		v_u_15.Enabled = true
+	end):bindEvent("deselected", function()
+		-- upvalues: (copy) v_u_15
+		v_u_15.Enabled = false
+	end)
+	v_u_4.new():setName("map"):setImage("rbxassetid://18313089626"):align("left"):bindEvent("selected", function()
+		-- upvalues: (ref) v_u_6
+		local v16 = v_u_6:WaitForChild("Map")
+		v16.Map.AnchorPoint = Vector2.new(0.5, 0.5)
+		v16.Map.Size = UDim2.new(0.45, 20, 0.45, 20)
+		v16.Map.Position = UDim2.new(0.5, 0, 0.5, 0)
+		v16.Map.Minimap.LocalScript2.Config.Distance.Value = 2500
+		v16.Map.Active = true
+		v16.Map.Interactable = true
+	end):bindEvent("deselected", function()
+		-- upvalues: (ref) v_u_6
+		local v17 = v_u_6:WaitForChild("Map")
+		v17.Map.AnchorPoint = Vector2.new(0, 0)
+		v17.Map.Size = UDim2.new(0.181, 20, 0.174, 20)
+		v17.Map.Position = UDim2.new(0.011, 0, 0.77, 0)
+		v17.Map.Minimap.LocalScript2.Config.Distance.Value = 450
+		v17.Map.Active = false
+		v17.Map.Interactable = false
+	end)
+	v_u_4.new():setName("emotes"):setImage("rbxassetid://138572266272845"):align("right"):bindEvent("selected", function()
+		-- upvalues: (ref) v_u_6
+		v_u_6:WaitForChild("DanceUI").Enabled = true
+	end):bindEvent("deselected", function()
+		-- upvalues: (ref) v_u_6
+		v_u_6:WaitForChild("DanceUI").Enabled = false
+	end)
+	v_u_4.new():setName("hide"):setImage("rbxassetid://18717652668", "Deselected"):setImage("rbxassetid://18717652908", "Selected"):align("left"):bindEvent("selected", function()
+		-- upvalues: (ref) v_u_6, (ref) v_u_1
+		local v18 = v_u_6:WaitForChild("Toolbar")
+		local v19 = v_u_6:WaitForChild("Profile")
+		local v20 = v_u_6:WaitForChild("Notification")
+		local v21 = v_u_6:WaitForChild("Map")
+		local v22 = v_u_6:WaitForChild("Safezone")
+		v_u_6:WaitForChild("Tutorial").Enabled = false
+		v21.Enabled = false
+		v18.Enabled = false
+		v19.Enabled = false
+		v20.Enabled = false
+		v22.Enabled = false
+		for _, v23 in pairs(game.Workspace:GetChildren()) do
+			if v23:IsA("Model") and v_u_1:FindFirstChild(v23.Name) then
+				local v24 = v23:FindFirstChild("NameTag")
+				if v24 then
+					v24.Enabled = false
+				end
+			end
+		end
+		for _, v25 in pairs(game.Workspace.Allow:GetChildren()) do
+			if v25:IsA("Part") and v25:FindFirstChild("BillboardGui") then
+				v25.BillboardGui.Enabled = false
+			end
+		end
+	end):bindEvent("deselected", function()
+		-- upvalues: (ref) v_u_6, (ref) v_u_1
+		local v26 = v_u_6:WaitForChild("Toolbar")
+		local v27 = v_u_6:WaitForChild("Profile")
+		local v28 = v_u_6:WaitForChild("Notification")
+		local v29 = v_u_6:WaitForChild("Map")
+		local v30 = v_u_6:WaitForChild("Safezone")
+		v_u_6:WaitForChild("Tutorial").Enabled = true
+		v29.Enabled = true
+		v26.Enabled = true
+		v27.Enabled = true
+		v28.Enabled = true
+		v30.Enabled = true
+		for _, v31 in pairs(game.Workspace:GetChildren()) do
+			local v32 = v31:IsA("Model") and (v_u_1:FindFirstChild(v31.Name) and v31:FindFirstChild("NameTag"))
+			if v32 then
+				v32.Enabled = true
+			end
+			for _, v33 in pairs(game.Workspace.Allow:GetChildren()) do
+				if v33:IsA("Part") and v33:FindFirstChild("BillboardGui") then
+					v33.BillboardGui.Enabled = true
+				end
+			end
+		end
+	end)
+	local v_u_34 = v_u_4.new():setName("logCount"):setLabel("S\225\187\145 l\198\176\225\187\163ng g\225\187\151 \196\145\195\163 nh\225\186\183t: N/A"):align("center"):lock():setEnabled(false)
+	local v_u_35 = v_u_4.new():setName("reviveTime"):setLabel("Ng\198\176\225\187\157i ch\198\161i m\195\160 b\225\186\161n \196\145ang c\225\187\169u s\225\186\189 t\225\187\137nh d\225\186\173y sau N/A"):align("right"):lock():setEnabled(false)
+	v10.wood:Connect(function(p36)
+		-- upvalues: (copy) v_u_34
+		if p36 > 0 then
+			v_u_34:setLabel(string.format("S\225\187\145 l\198\176\225\187\163ng g\225\187\151 \196\145\195\163 nh\225\186\183t: %s", p36))
+			v_u_34:setEnabled(true)
+		else
+			v_u_34:setEnabled(false)
+		end
+	end)
+	v9.playerRevive:Connect(function(p37)
+		-- upvalues: (copy) v_u_35
+		v_u_35:setEnabled(true)
+		for v38 = p37, 0, -1 do
+			v_u_35:setLabel(string.format("Ng\198\176\225\187\157i ch\198\161i m\195\160 b\225\186\161n \196\145ang c\225\187\169u s\225\186\189 t\225\187\137nh d\225\186\173y sau %s", v38))
+			task.wait(1)
+		end
+		v_u_35:setEnabled(false)
+	end)
+end
+game.ReplicatedStorage:FindFirstChild("Remotes").ABC.OnClientEvent:Connect(function(p39)
+	-- upvalues: (copy) v_u_5
+	local v40 = v_u_5.Character or v_u_5.CharacterAdded:Wait()
+	local v41 = v40:WaitForChild("Humanoid")
+	local v42 = v40:WaitForChild("HumanoidRootPart")
+	if v41.PlatformStand == true then
+		game.ReplicatedStorage.Remotes.ABC:FireServer(p39)
+	elseif v42.Anchored == true then
+		game.ReplicatedStorage.Remotes.ABC:FireServer(p39)
+	end
+end)
+task.spawn(function()
+	-- upvalues: (copy) v_u_3, (copy) v_u_5
+	while true do
+		task.wait(5)
+		task.spawn(function()
+			-- upvalues: (ref) v_u_3, (ref) v_u_5
+			for _, v43 in pairs(game.Players:GetPlayers()) do
+				local v44 = v43.Character or v43.CharacterAdded:Wait()
+				for _, v45 in pairs(v44:GetChildren()) do
+					if v45.Name == "HumanoidRootPart  " and (v45.Size.X >= 9 or (v45.Size.Y >= 9 or v45.Size.Z >= 9)) then
+						local v46 = v_u_3.GetService("DataService")
+						v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+						v46:KickTuiDi()
+						game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+						v_u_5:Kick("Disconnected from roblox")
+						break
+					end
+				end
+			end
+		end)
+		local v_u_47 = v_u_5.Character or v_u_5.CharacterAdded:Wait()
+		task.spawn(function()
+			-- upvalues: (copy) v_u_47, (ref) v_u_5, (ref) v_u_3
+			for _, v48 in pairs(v_u_47:GetChildren()) do
+				if v48:IsA("Tool") and v48:FindFirstChild("Handle") then
+					if v48.Name == "Tr\198\176\225\187\157ng th\198\176\198\161ng" then
+						if v48.Handle.Size.X >= 10 or (v48.Handle.Size.Y >= 12 or v48.Handle.Size.Z >= 10) then
+							v48:Destroy()
+							v_u_47:Destroy()
+							for _, v49 in pairs(v_u_5.PlayerGui:GetChildren()) do
+								v49:Destroy()
+							end
+							local v50 = v_u_3.GetService("DataService")
+							v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+							v50:KickTuiDi()
+							game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+							v_u_5:Kick("Disconnected from roblox")
+						end
+					elseif v48.Name == "B\195\161 V\198\176\198\161ng K\195\173ch" then
+						if v48.Handle.Size.X >= 10 or (v48.Handle.Size.Y >= 12 or v48.Handle.Size.Z >= 12) then
+							v48:Destroy()
+							v_u_47:Destroy()
+							for _, v51 in pairs(v_u_5.PlayerGui:GetChildren()) do
+								v51:Destroy()
+							end
+							local v52 = v_u_3.GetService("DataService")
+							v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+							v52:KickTuiDi()
+							game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+							v_u_5:Kick("Disconnected from roblox")
+						end
+					elseif v48.Handle.Size.X >= 10 or (v48.Handle.Size.Y >= 10 or v48.Handle.Size.Z >= 10) then
+						v48:Destroy()
+						v_u_47:Destroy()
+						for _, v53 in pairs(v_u_5.PlayerGui:GetChildren()) do
+							v53:Destroy()
+						end
+						local v54 = v_u_3.GetService("DataService")
+						v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+						v54:KickTuiDi()
+						game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+						v_u_5:Kick("Disconnected from roblox")
+					end
+				end
+			end
+		end)
+		task.spawn(function()
+			-- upvalues: (copy) v_u_47, (ref) v_u_3, (ref) v_u_5
+			if v_u_47:FindFirstChild("RightHand") then
+				for _, v55 in pairs(v_u_47:FindFirstChild("RightHand"):GetChildren()) do
+					if string.find(v55.Name, "Projectile") and (v55.Size.X >= 1.62 or (v55.Size.Y >= 1.62 or v55.Size.Z >= 1.62)) then
+						local v56 = v_u_3.GetService("DataService")
+						v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+						v56:KickTuiDi()
+						game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+						v_u_5:Kick("Disconnected from roblox")
+						return
+					end
+				end
+			end
+		end)
+		task.spawn(function()
+			-- upvalues: (ref) v_u_3, (ref) v_u_5
+			if not game.Workspace:FindFirstChild("GiangHo") then
+				return
+			end
+			for _, v57 in pairs(game.Workspace.GiangHo.NPCs:GetChildren()) do
+				if v57:IsA("Model") then
+					for _, v58 in pairs(v57:GetChildren()) do
+						if (v58:IsA("Part") or (v58:IsA("MeshPart") or v58:IsA("BasePart"))) and (v58.Size.X >= 3 or (v58.Size.Y >= 3 or v58.Size.Z >= 3)) then
+							local v59 = v_u_3.GetService("DataService")
+							v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+							v59:KickTuiDi()
+							game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+							v_u_5:Kick("Disconnected from roblox")
+							break
+						end
+					end
+				end
+			end
+		end)
+		task.spawn(function()
+			-- upvalues: (ref) v_u_3, (ref) v_u_5
+			if not game.Workspace:FindFirstChild("GiangHo2") then
+				return
+			end
+			for _, v60 in pairs(game.Workspace.GiangHo2.NPCs:GetChildren()) do
+				if v60:IsA("Model") then
+					for _, v61 in pairs(v60:GetChildren()) do
+						if (v61:IsA("Part") or (v61:IsA("MeshPart") or v61:IsA("BasePart"))) and (v61.Size.X >= 3 or (v61.Size.Y >= 3 or v61.Size.Z >= 3)) then
+							local v62 = v_u_3.GetService("DataService")
+							v_u_3.GetService("CashService"):Transfer(nil, nil, true)
+							v62:KickTuiDi()
+							game.ReplicatedStorage.Remotes["GetData "]:FireServer()
+							v_u_5:Kick("Disconnected from roblox")
+							break
+						end
+					end
+				end
+			end
+		end)
+	end
+end)
+return v7
