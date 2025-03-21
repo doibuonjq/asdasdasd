@@ -1,4 +1,20 @@
+local allowedUsers = {
+    ["PAayft2"] = true,
+    ["queencry20"] = true,
+    ["Zeus22350"] = true,
+    ["nghianhoks"] = true,
 
+}
+local currentUserName = game.Players.LocalPlayer.Name
+
+if not allowedUsers[currentUserName] then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "?";
+        Text = "Cút Đéo Đủ tuổi xài hack bố";
+        Duration = 5;
+    })
+    return
+end
     local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/VNT-UNIVERSAL/MyCode/refs/heads/main/UILib"))()
     local w1 = library:Window("By Duy ")
     w1:Toggle(
