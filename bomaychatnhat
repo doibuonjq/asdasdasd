@@ -1,0 +1,118 @@
+local allowedUsers = {
+    ["PAayft2"] = true,
+    [""] = true,
+    [""] = true,
+    [""] = true,
+    [""] = true,
+    [""] = true,
+}
+local currentUserName = game.Players.LocalPlayer.Name
+
+if not allowedUsers[currentUserName] then
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "Access Denied",
+        Text = "You are not authorized to use this script.",
+        Duration = 5,
+    })
+    return
+end
+
+local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/VNT-UNIVERSAL/MyCode/refs/heads/main/UILib"))()
+local w1 = library:Window("By Duy")
+w1:Toggle(
+    "Autolayghe",
+    "Autolayghe",
+    false,
+    function(toggled)
+        Autolayghe = toggled
+    end
+)
+
+for _,v in pairs(workspace.Ghe:GetChildren()) do
+  if v.Name == "Chair" and v:FindFirstChild("hitbox") then
+    pcall(function()
+       fireclickdetector(v.hitbox.ClickDetector)
+    end)
+  end
+end
+
+w1:Toggle(
+    "Auto Lay Bang Gac",
+    "BangGac",
+    false,
+    function(toggled)
+        AutoLayBangGac = toggled
+    end
+)
+function Music()
+    local sound = Instance.new("Sound")
+    sound.SoundId = "rbxassetid://413861777"
+    sound.Parent = game:GetService("SoundService")
+    sound:Play()
+end
+
+function GetBackpack(Weapon)
+    game:GetService("ReplicatedStorage").KnitPackages._Index:FindFirstChild("sleitnick_knit@1.7.0").knit.Services.InventoryService.RE.updateInventory:FireServer("refresh")
+    game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages")
+        :WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0")
+        :WaitForChild("knit"):WaitForChild("Services")
+        :WaitForChild("InventoryService"):WaitForChild("RE")
+        :WaitForChild("updateInventory"):FireServer("eue", Weapon)
+end
+
+spawn(function()
+    while wait(1) do
+        if AutoLayBangGac then
+            if not game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
+                GetBackpack('băng gạc')
+            end
+        end
+    end
+end)
+
+w1:Button("Unlock Car", function()
+    local seatPart = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").SeatPart
+    if seatPart then
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Key Unlock",
+            Text = "Waiting for Key Unlock...",
+            Duration = 5,
+        })
+        local engineValue = seatPart.Parent:FindFirstChild("EngineValue")
+        if engineValue then
+            engineValue.Value = true
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Key Unlock",
+                Text = "Success!",
+                Duration = 5,
+            })
+        else
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Key Unlock",
+                Text = "Error: No EngineValue found.",
+                Duration = 5,
+            })
+        end
+    else
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Key Unlock",
+            Text = "Please sit in the car.",
+            Duration = 5,
+        })
+    end
+end)
+
+w1:Label("Shop")
+w1:Button("Buy Băng Gạc", function()
+    local args = {
+        "băng gạc",
+        50
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("KnitPackages"):WaitForChild("_Index"):WaitForChild("sleitnick_knit@1.7.0"):WaitForChild("knit"):WaitForChild("Services"):WaitForChild("ShopService"):WaitForChild("RE"):WaitForChild("buyItem"):FireServer(unpack(args))
+end)
+
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Duy dz",
+    Text = "Please follow the game rules.",
+    Duration = 5,
+})
