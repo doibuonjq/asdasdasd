@@ -10,8 +10,8 @@ local currentUserName = game.Players.LocalPlayer.Name
 
 if not allowedUsers[currentUserName] then
     game.StarterGui:SetCore("SendNotification", {
-        Title = "xài ké cmm",
-        Text = "bố m địt cả lò nhà mày",
+        Title = "djtmemay",
+        Text = "xaicmm",
         Duration = 5,
     })
     return
