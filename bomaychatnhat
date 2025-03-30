@@ -28,25 +28,12 @@ w1:Toggle(
         AutoLayBangGac = toggled
     end
 )
-w1:Toggle(
-    "Auto lay ghe",
-    "Autolayghe",
-    false,
-    function(toggled)
-        Autolayghe = toggled
-    end
-)
-
-spawn(function()
-    while wait(1) do
-        if Autolayghe then
-            for _,v in pairs(workspace.Ghe:GetChildren()) do
-                if v.Name == "Chair" and v:FindFirstChild("hitbox") then
-                    pcall(function()
-                        fireclickdetector(v.hitbox.ClickDetector)
-                    end)
-                end
-            end
+w1:Button("lay ghe", function()
+    for _,v in pairs(workspace.Ghe:GetChildren()) do
+        if v.Name == "Chair" and v:FindFirstChild("hitbox") then
+            pcall(function()
+                fireclickdetector(v.hitbox.ClickDetector)
+            end)
         end
     end
 end)
