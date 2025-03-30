@@ -10,8 +10,8 @@ local currentUserName = game.Players.LocalPlayer.Name
 
 if not allowedUsers[currentUserName] then
     game.StarterGui:SetCore("SendNotification", {
-        Title = "Access Denied",
-        Text = "You are not authorized to use this script.",
+        Title = "co cai lon cko may xai",
+        Text = "xai ke cmm",
         Duration = 5,
     })
     return
