@@ -1,18 +1,17 @@
 local allowedUsers = {
     ["PAayft2"] = true,
-    ["a"] = true,
-    ["g"] = true,
-    ["f"] = true,
-    ["s"] = true,
-    ["a"] = true,
+    [""] = true,
+    [""] = true,
+    [""] = true,
+
 }
 local currentUserName = game.Players.LocalPlayer.Name
 
 if not allowedUsers[currentUserName] then
     game.StarterGui:SetCore("SendNotification", {
-        Title = "djtmemay",
-        Text = "xaicmm",
-        Duration = 5,
+        Title = "?";
+        Text = "Cút Đéo Đủ tuổi xài hack bố";
+        Duration = 5;
     })
     return
 end
