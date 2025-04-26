@@ -55,7 +55,7 @@ function GetBackpack(Weapon)
 end
 
 spawn(function()
-    while wait(1) do
+    while wait() do
         if AutoLayBangGac then
             if not game.Players.LocalPlayer.Backpack:FindFirstChild('băng gạc') then
                 GetBackpack('băng gạc')
