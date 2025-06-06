@@ -1,0 +1,24 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Truy cập HumanoidRootPart của Boss một cách an toàn
+local bossRootPart
+
+pcall(function()
+    bossRootPart = workspace.Gameplay
+        .RegionsLoaded
+        .SummerEvent
+        .Boss
+        .BossHolder
+        .Boss
+        :FindFirstChild("HumanoidRootPart")
+end)
+
+-- Nếu tìm được Boss thì kéo Boss lại trước mặt người chơi
+if bossRootPart then
+    bossRootPart.CFrame = rootPart.CFrame * CFrame.new(0, 0, -6) -- -6 là khoảng cách phía trước
+    print("✅ Boss đã được kéo về vị trí của bạn.")
+else
+    warn("❌ Không tìm thấy Boss hoặc HumanoidRootPart.")
+end
