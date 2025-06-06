@@ -1,11 +1,6 @@
-local allowedUsers = {
-    ["PAayft2"] = true,
-    ["hakhanhlam9999"] = true,
-    ["vuongvanquy28"] = true,
-    ["thaidz110"] = true,
-    ["seapiece10day"] = true,
-    [""] = true,
-}
+local allowedUsers = 
+
+
 local currentUserName = game.Players.LocalPlayer.Name
 
 if not allowedUsers[currentUserName] then
@@ -63,7 +58,12 @@ spawn(function()
         end
     end
 end)
-
+w1:Button("tắt menu", function()
+game:GetService("Players").LocalPlayer.PlayerGui.Inventory.MainFrame.Visible = false
+end
+w1:Button("bật menu", function()
+game:GetService("Players").LocalPlayer.PlayerGui.Inventory.MainFrame.Visible = true
+end
 w1:Button("Unlock Car", function()
     local seatPart = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").SeatPart
     if seatPart then
