@@ -1,4 +1,4 @@
-local allowedUsers = 
+local allowedUsers = loadstring(game:HttpGet("https://raw.githubusercontent.com/doibuonjq/asdasdasd/refs/heads/main/Nah"))()
 
 
 local currentUserName = game.Players.LocalPlayer.Name
