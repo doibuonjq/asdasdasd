@@ -1,0 +1,19 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local rootPart = character:WaitForChild("HumanoidRootPart")
+
+-- Truy cập HumanoidRootPart của Boss
+local bossRootPart = workspace:FindFirstChild("Gameplay")
+    and workspace.Gameplay:FindFirstChild("RegionsLoaded")
+    and workspace.Gameplay.RegionsLoaded:FindFirstChild("SummerEvent")
+    and workspace.Gameplay.RegionsLoaded.SummerEvent:FindFirstChild("Boss")
+    and workspace.Gameplay.RegionsLoaded.SummerEvent.Boss:FindFirstChild("BossHolder")
+    and workspace.Gameplay.RegionsLoaded.SummerEvent.Boss.BossHolder:FindFirstChild("Boss")
+    and workspace.Gameplay.RegionsLoaded.SummerEvent.Boss.BossHolder.Boss:FindFirstChild("HumanoidRootPart")
+
+-- Nếu tìm được Boss thì kéo về trước mặt người chơi
+if bossRootPart then
+    bossRootPart.CFrame = rootPart.CFrame * CFrame.new(0, 0, -6)
+else
+    warn("❌ Không tìm thấy Boss hoặc HumanoidRootPart")
+end
