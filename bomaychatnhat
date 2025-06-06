@@ -1,16 +1,28 @@
 local allowedUsers = loadstring(game:HttpGet("https://raw.githubusercontent.com/doibuonjq/asdasdasd/refs/heads/main/Nah"))()
+-- Load allowed usernames from a remote file (must return a Lua table)
+local success, allowedUsers = pcall(function()
+    return loadstring(game:HttpGet("https://raw.githubusercontent.com/doibuonjq/asdasdasd/refs/heads/main/Nah"))()
+end)
 
+-- Check if loading the user list was successful
+if not success or type(allowedUsers) ~= "table" then
+    warn("Failed to load allowed users list.")
+    return
+end
 
+-- Get the local player's name
 local currentUserName = game.Players.LocalPlayer.Name
 
+-- Check if the user is allowed
 if not allowedUsers[currentUserName] then
     game.StarterGui:SetCore("SendNotification", {
-        Title = "co cai lon cko may xai",
-        Text = "xai ke cmm",
+        Title = "Access Denied",
+        Text = "You are not whitelisted to use this script.",
         Duration = 5,
     })
     return
 end
+
 
 local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/VNT-UNIVERSAL/MyCode/refs/heads/main/UILib"))()
 local w1 = library:Window("By Duy")
