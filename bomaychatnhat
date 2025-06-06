@@ -1,22 +1,4 @@
-local success, allowedUsers = pcall(function()
-    return loadstring(game:HttpGet("https://raw.githubusercontent.com/doibuonjq/asdasdasd/main/Nah.lua"))()
-end)
 
-if not success or type(allowedUsers) ~= "table" then
-    warn("Could not load allowed users list.")
-    return
-end
-
-local currentUserName = game.Players.LocalPlayer.Name
-
-if not allowedUsers[currentUserName] then
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "Access Denied",
-        Text = "You are not authorized to use this feature.",
-        Duration = 5,
-    })
-    return
-end
 
 
 
