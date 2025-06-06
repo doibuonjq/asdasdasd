@@ -50,10 +50,10 @@ spawn(function()
 end)
 w1:Button("tắt menu", function()
 game:GetService("Players").LocalPlayer.PlayerGui.Inventory.MainFrame.Visible = false
-end
+end)
 w1:Button("bật menu", function()
 game:GetService("Players").LocalPlayer.PlayerGui.Inventory.MainFrame.Visible = true
-end
+end)
 w1:Button("Unlock Car", function()
     local seatPart = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").SeatPart
     if seatPart then
